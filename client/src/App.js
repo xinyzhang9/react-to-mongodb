@@ -8,11 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users:[{
-        name: 'default user',
-        task: 'build react app',
-        IsIntern: true
-      }]
+      users:[]
     };
   }
 
@@ -43,8 +39,8 @@ class App extends Component {
 
       <button onClick = {() => {
              axios.post('http://localhost:5000/postData')
-              .catch(err => console.log(err))
-              .then(this.fetchUsers());
+              .then(res => this.setState({users: [...this.state.users,res.data]}))
+              .catch(err => console.log(err));
         }}>postdata</button>
 
         <UserList users={this.state.users} />

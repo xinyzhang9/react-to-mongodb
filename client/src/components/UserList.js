@@ -3,13 +3,17 @@ import User from './User';
 
 const UserList = ({ users }) => (
   <ul>
-    {users.map(user =>
+    {users.map(user => {
+      return (
       <User
-        key={user.name}
+        key={user._id}
         name={user.name}
         task={user.task}
         IsIntern={user.IsIntern}
-      />
+      />)
+      
+    }
+      
     )}
   </ul>
 );

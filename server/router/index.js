@@ -18,12 +18,12 @@ router.post('/postData',function(req, res) {
 	var user = new User();
 	user.name = 'new user' + Math.floor(Math.random() * 100);
 	user.task = 'new task' + Math.floor(Math.random() * 100);
-	user.IsIntern = [true, false][Math.floor((Math.random() * 1) + 1)];
+	user.IsIntern = [true, false][Math.floor((Math.random() * 1)+0.5)];
 
 	user.save(function(err) {
-		if (err)
-			res.send(err);
-		res.json({ message: 'User successfully added!' });
+		if (err) res.send(err);
+		console.log(user._id);
+		res.json(user);
 	});
 });
 
